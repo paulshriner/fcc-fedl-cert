@@ -6,31 +6,30 @@ import { useState, useEffect } from 'react';
 const quoteAPI = "quotes/random";
 
 function QuoteBox() {
-  return (
-    <div id="quote-box">
-      <Quote />
-    </div>
-  );
-}
-
-function Quote() {
   // Fetch method from https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
   const [quote, setQuote] = useState([]);
+  const [change, setChange] = useState(true);
 
   // Send a request, returns as a JSON
   useEffect(() => {
-    fetch(quoteAPI)
-    .then(res => res.json())
-    .then((data) => {setQuote(data)});
-  }, []);
+    if (change) {
+      fetch(quoteAPI)
+      .then(res => res.json())
+      .then((data) => {setQuote(data)});
+      setChange(false);
+    }
+  }, [change]);
 
-  // Render quote and author from quote object
   return (
-    <div>
-      <p id="text">"{quote.quote}"</p>
-      <p id="author">- {quote.author}</p>
+    <div id="quote-box">
+      <div>
+        <p id="text">"{quote.quote}"</p>
+        <p id="author">- {quote.author}</p>
+        {/* Thanks https://stackoverflow.com/questions/75560479/trigger-useeffect-based-on-an-onclick-of-a-button for useEffect on onClick */}
+        <button id="new-quote" onClick={() => setChange(true)}>New Quote</button>
+      </div>
     </div>
-  )
+  );
 }
 
 function App() {
