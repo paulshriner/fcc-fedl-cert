@@ -21,13 +21,15 @@ function QuoteBox() {
   }, [change]);
 
   return (
-    <div id="quote-box">
-      <div>
+    <div id="container">
+      <div id="quote-box">
         <p id="text">"{quote.quote}"</p>
         <p id="author">- {quote.author}</p>
-        <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=%22" + quote.quote.split(" ").join("%20") + "%22%20" + quote.author.split(" ").join("%20")}>Tweet</a>
-        {/* Thanks https://stackoverflow.com/questions/75560479/trigger-useeffect-based-on-an-onclick-of-a-button for useEffect on onClick */}
-        <button id="new-quote" onClick={() => setChange(true)}>New Quote</button>
+        <div id="action-buttons">
+          <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=%22" + quote.quote.split(" ").join("%20") + "%22%20" + quote.author.split(" ").join("%20")}>Twitter</a>
+          {/* Thanks https://stackoverflow.com/questions/75560479/trigger-useeffect-based-on-an-onclick-of-a-button for useEffect on onClick */}
+          <button id="new-quote" onClick={() => setChange(true)}>New Quote</button>
+        </div>
       </div>
     </div>
   );

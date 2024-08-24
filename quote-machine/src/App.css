@@ -1,1 +1,28 @@
+#container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#quote-box {
+    background-color: lightgray;
+    padding: 30px;
+    border-radius: 10px;
+    min-height: 200px;
+}
+
+#text {
+    min-width: 500px;
+    max-width: 500px;
+    font-size: 20px;
+}
+
+#author {
+    text-align: right;
+}
+
+#action-buttons {
+    display: flex;
+    justify-content: space-between;
+}
