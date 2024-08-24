@@ -7,7 +7,7 @@ const quoteAPI = "quotes/random";
 
 function QuoteBox() {
   // Fetch method from https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
-  const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState({quote: "", author: ""});
   const [change, setChange] = useState(true);
 
   // Send a request, returns as a JSON
@@ -25,6 +25,7 @@ function QuoteBox() {
       <div>
         <p id="text">"{quote.quote}"</p>
         <p id="author">- {quote.author}</p>
+        <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=%22" + quote.quote.split(" ").join("%20") + "%22%20" + quote.author.split(" ").join("%20")}>Tweet</a>
         {/* Thanks https://stackoverflow.com/questions/75560479/trigger-useeffect-based-on-an-onclick-of-a-button for useEffect on onClick */}
         <button id="new-quote" onClick={() => setChange(true)}>New Quote</button>
       </div>
