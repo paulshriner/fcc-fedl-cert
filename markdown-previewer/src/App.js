@@ -16,7 +16,9 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({markdown: "# Hello\n## Hello\n[link](freecodecamp.org)\n\n```code```\n- list item\n\n> blockquote\n\n![image](https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/02/rickroll-header.jpg)\n\n**bolded text**"});
+    let startingText = "# Hello\n## Hello\n[link](freecodecamp.org)\n\n\nHere is `inline code`\n\n```\nvar code = 0;\nvar block = 0;\n```\n- list item\n\n> blockquote\n\n![image](https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/02/rickroll-header.jpg)\n\n**bolded text**";
+    this.setState({markdown: startingText});
+    document.getElementById("editor").value = startingText;
   }
   
   render() {
@@ -24,10 +26,9 @@ export default class App extends React.Component {
       <div className="App">
         <div className="container">
           <div className="input">
-            {/* Thanks https://stackoverflow.com/questions/8627902/how-to-add-a-new-line-in-textarea-element for new line */}
             <textarea id="editor" onChange={(e) => {
               this.updateMarkdown(e.target.value);
-            }} defaultValue="# Hello&#13;&#10;## Hello&#13;&#10;[link](freecodecamp.org)&#13;&#10;```code```&#13;&#10;- list item&#13;&#10;> blockquote&#13;&#10;[image](https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/02/rickroll-header.jpg)&#13;&#10;**bolded text**"></textarea>
+            }}></textarea>
             <br></br>
             <button type="button" id="clear" onClick={() => {
               document.getElementById("editor").value = "";
