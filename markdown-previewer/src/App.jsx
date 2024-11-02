@@ -1,6 +1,6 @@
 import React from "react";
 import { marked } from "marked";
-import "./App.css"
+import './App.css'
 
 export default class App extends React.Component {
   // Thanks to https://www.freecodecamp.org/news/how-to-build-a-markdown-previewer-with-react-js/ for help with marked/Markdown parsing

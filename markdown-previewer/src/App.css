@@ -1,17 +1,17 @@
 .container {
-    display: flex;
+  display: flex;
 }
 
 #editor {
-    height: 90vh;
-    width: 40vw;
+  height: 90vh;
+  width: 40vw;
 }
 
 #preview {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 #clear {
-    margin-top: 10px;
-    margin-left: 15vw;
+  margin-top: 10px;
+  margin-left: 15vw;
 }
