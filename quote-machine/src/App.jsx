@@ -1,9 +1,9 @@
-import './App.css';
+import './App.css'
 
 import { useState, useEffect } from 'react';
 
 // Quote API from https://dummyjson.com/docs/quotes#quotes-random
-const quoteAPI = "quotes/random";
+const quoteAPI = "https://dummyjson.com/quotes/random";
 
 function QuoteBox() {
   // Fetch method from https://www.freecodecamp.org/news/how-to-fetch-api-data-in-react/
