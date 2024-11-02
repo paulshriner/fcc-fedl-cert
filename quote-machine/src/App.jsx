@@ -23,8 +23,10 @@ function QuoteBox() {
   return (
     <div id="container">
       <div id="quote-box">
-        <p id="text">"{quote.quote}"</p>
-        <p id="author">- {quote.author}</p>
+        <div id="quote">
+          <p id="text">"{quote.quote}"</p>
+          <p id="author">- {quote.author}</p>
+        </div>
         <div id="action-buttons">
           <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=%22" + quote.quote.split(" ").join("%20") + "%22%20" + quote.author.split(" ").join("%20")}>Twitter</a>
           {/* Thanks https://stackoverflow.com/questions/75560479/trigger-useeffect-based-on-an-onclick-of-a-button for useEffect on onClick */}

@@ -9,7 +9,11 @@
   background-color: lightgray;
   padding: 30px;
   border-radius: 10px;
-  min-height: 200px;
+  min-height: 250px;
+}
+
+#quote {
+  min-height: 220px;
 }
 
 #text {
@@ -25,4 +29,22 @@
 #action-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+#tweet-quote {
+  padding: 10px;
+  background-color: rgb(98, 204, 98);
+  color: black;
+  text-decoration: none;
+}
+
+#new-quote {
+  border: none;
+  background-color: rgb(98, 204, 98);
+  padding: 10px;
+  font-size: 15px;
+}
+
+#new-quote:hover {
+  cursor: pointer;
 }
