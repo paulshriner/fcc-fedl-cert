@@ -8,6 +8,8 @@ function handleButtonPress(event) {
 
   // Play the button's respective audio element
   document.getElementById(id).play();
+
+  updateDisplay(id);
 }
 
 function handleKeyPress(event) {
@@ -15,6 +17,39 @@ function handleKeyPress(event) {
   const id = event.key.toUpperCase();
   if (id === "Q" || id === "W" || id === "E" || id === "A" || id === "S" || id === "D" || id === "Z" || id === "X" || id === "C") {
     document.getElementById(id).play();
+    updateDisplay(id);
+  }
+}
+
+function updateDisplay (id) {
+  switch (id) {
+    case "Q":
+      document.getElementById("display").innerText = "Heater 1";
+      break;
+    case "W":
+      document.getElementById("display").innerText = "Heater 2";
+      break;
+    case "E":
+      document.getElementById("display").innerText = "Heater 3";
+      break;
+    case "A":
+      document.getElementById("display").innerText = "Heater 4";
+      break;
+    case "S":
+      document.getElementById("display").innerText = "Clap";
+      break;
+    case "D":
+      document.getElementById("display").innerText = "Open HH";
+      break;
+    case "Z":
+      document.getElementById("display").innerText = "Kick n' Hat";
+      break;
+    case "X":
+      document.getElementById("display").innerText = "Kick";
+      break;
+    case "C":
+      document.getElementById("display").innerText = "Closed HH";
+      break;
   }
 }
 
