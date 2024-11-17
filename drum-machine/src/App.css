@@ -31,6 +31,6 @@ button {
     background-color: lightgreen;
 }
 
-buton:hover {
+button:hover {
     transition: .5s;
 }
