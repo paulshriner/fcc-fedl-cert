@@ -1,0 +1,36 @@
+body {
+    background-color: lightgray;
+}
+
+#drum-machine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#drum-pads {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 50%;
+    height: 200px;
+}
+
+#display {
+    border: 1px dashed black;
+    width: 200px;
+    text-align: center;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+button {
+    transition: .5s;
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: lightgreen;
+}
+
+buton:hover {
+    transition: .5s;
+}
