@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-export default function App() {
+function App() {
   // Thanks https://react.dev/learn/managing-state for state
   const [operand1, setOperand1] = useState(0);
   const [operand2, setOperand2] = useState(0);
@@ -148,5 +148,7 @@ export default function App() {
         <button id="decimal" onClick={handleClick}>.</button>
       </div>
     </div>
-  )
+  );
 }
+
+export default App

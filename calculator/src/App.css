@@ -1,3 +1,7 @@
+body {
+    background-color: lightblue;
+}
+
 #outer {
     display: flex;
     justify-content: center;
@@ -10,6 +14,22 @@
     grid-template-columns: auto auto auto auto;
     width: 30%;
     height: 50vh;
+    background-color: black;
+    border-radius: 50px;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 50px;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    transition: .5s;
+}
+
+button:hover {
+    transition: .5s;
+    border: 2px solid gold;
 }
 
 #display-outer {
@@ -23,6 +43,13 @@
 #display {
     margin: 0;
     text-align: right;
+    color: white;
+    padding-right: 5px;
+    font-size: 40px;
+}
+
+#clear {
+    background-color: darkred;
 }
 
 #clear, #zero {
@@ -31,4 +58,9 @@
 
 #equals {
     grid-row: span 2;
+    background-color: green;
+}
+
+#add, #subtract, #multiply, #divide {
+    background-color: darkslategray;
 }
