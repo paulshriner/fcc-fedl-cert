@@ -3,53 +3,58 @@ import './App.css'
 
 function App() {
   // Thanks https://react.dev/learn/managing-state for state
-  const [operand1, setOperand1] = useState(0);
-  const [operand2, setOperand2] = useState(0);
+  const [operand1, setOperand1] = useState('N');
+  const [operand2, setOperand2] = useState('N');
   const [operator, setOperator] = useState('N');
 
   const handleClick = (e) => {
     switch(e.target.id) {
       case 'one':
         // if operand is 0 then set it to the number, else add to the existing number (same for 0-9)
-        setOperand2(operand2 === 0 ? 1 : operand2 + '1');
+        setOperand2(operand2 === 'N' ? 1 : operand2 === '-N' ? -1 : operand2 + '1');
         break;
       case 'two':
-        setOperand2(operand2 === 0 ? 2 : operand2 + '2');
+        setOperand2(operand2 === 'N' ? 2 : operand2 === '-N' ? -2 : operand2 + '2');
         break;
       case 'three':
-        setOperand2(operand2 === 0 ? 3 : operand2 + '3');
+        setOperand2(operand2 === 'N' ? 3 : operand2 === '-N' ? -3 : operand2 + '3');
         break;
       case 'four':
-        setOperand2(operand2 === 0 ? 4 : operand2 + '4');
+        setOperand2(operand2 === 'N' ? 4 : operand2 === '-N' ? -4 : operand2 + '4');
         break;
       case 'five':
-        setOperand2(operand2 === 0 ? 5 : operand2 + '5');
+        setOperand2(operand2 === 'N' ? 5 : operand2 === '-N' ? -5 : operand2 + '5');
         break;
       case 'six':
-        setOperand2(operand2 === 0 ? 6 : operand2 + '6');
+        setOperand2(operand2 === 'N' ? 6 : operand2 === '-N' ? -6 : operand2 + '6');
         break;
       case 'seven':
-        setOperand2(operand2 === 0 ? 7 : operand2 + '7');
+        setOperand2(operand2 === 'N' ? 7 : operand2 === '-N' ? -7 : operand2 + '7');
         break;
       case 'eight':
-        setOperand2(operand2 === 0 ? 8 : operand2 + '8');
+        setOperand2(operand2 === 'N' ? 8 : operand2 === '-N' ? -8 : operand2 + '8');
         break;
       case 'nine':
-        setOperand2(operand2 === 0 ? 9 : operand2 + '9');
+        setOperand2(operand2 === 'N' ? 9 : operand2 === '-N' ? -9 : operand2 + '9');
         break;
       case 'zero':
-        setOperand2(operand2 === 0 ? 0 : operand2 + '0');
+        setOperand2(operand2 === 'N' || operand2 === 0 ? 0 : operand2 === '-N' ? -0 : operand2 + '0');
         break;
       case 'add':
-        // Here user pressed plus after entering number, prep for second number
-        if (operand2 !== 0) {
-          setOperand1(operand2);
-          setOperand2(0);
-        }
-        // Here user entered second number so this adds the numbers together
-        if (operand1 !== 0) {
-          setOperand1(solve());
-          setOperand2(0);
+        if (operand2 === '-N') {
+          // user doesn't want negative number anymore so need to remove
+          setOperand2('N');
+        } else {
+          // Here user pressed plus after entering number, prep for second number
+          if (operand2 !== 'N') {
+            setOperand1(operand2);
+            setOperand2('N');
+          }
+          // Here user entered second number so this adds the numbers together
+          if (operand1 !== 0 && operand1 !== 'N' && operand2 !== 'N') {
+            setOperand1(solve());
+            setOperand2('N');
+          }
         }
         setOperator('+');
         break;
@@ -57,53 +62,63 @@ function App() {
         // if no operator, then do subtraction
         if (operator === 'N') {
           setOperator('-');
-          if (operand2 !== 0) {
+          if (operand2 !== 'N') {
             setOperand1(operand2);
-            setOperand2(0);
+            setOperand2('N');
           }
         } else {
           // if 0 then user is entering a negative number, else do the operation
-          if (operand2 !== 0) {
+          if (operand2 !== 'N') {
             setOperand1(solve());
-            setOperand2(0);
-          } else {
-            setOperand2('-');
+            setOperand2('N');
+            setOperator('-');
+          } else if (operator !== '-') {
+            setOperand2('-N');
           }
         }
         break;
       case 'multiply':
-        if (operand2 !== 0) {
-          setOperand1(operand2);
-          setOperand2(0);
-        }
-        if (operand1 !== 0) {
-          setOperand1(solve());
-          setOperand2(0);
+        if (operand2 === '-N') {
+          setOperand2('N');
+        } else {
+          if (operand2 !== 'N') {
+            setOperand1(operand2);
+            setOperand2('N');
+          }
+          if (operand1 !== 0 && operand1 !== 'N' && operand2 !== 'N') {
+            console.log("a");
+            setOperand1(solve());
+            setOperand2('N');
+          }
         }
         setOperator('*');
         break;
       case 'divide':
-        if (operand2 !== 0) {
-          setOperand1(operand2);
-          setOperand2(0);
-        }
-        if (operand1 !== 0) {
-          setOperand1(solve());
-          setOperand2(0);
+        if (operand2 === '-N') {
+          setOperand2('N');
+        } else {
+          if (operand2 !== 'N') {
+            setOperand1(operand2);
+            setOperand2('N');
+          }
+          if (operand1 !== 0 && operand1 !== 'N' && operand2 !== 'N') {
+            setOperand1(solve());
+            setOperand2('N');
+          }
         }
         setOperator('/');
         break;
       case 'decimal':
-        setOperand2(operand2 + '.');
+        !operand2.toString().includes('.') && setOperand2(operand2 + '.');
         break;
       case 'equals':
         setOperand2(solve());
-        setOperand1(0);
+        setOperand1('N');
         setOperator('N');
         break;
       default:
-        setOperand1(0);
-        setOperand2(0);
+        setOperand1('N');
+        setOperand2('N');
         setOperator('N');
     }
   }
@@ -127,7 +142,7 @@ function App() {
     <div id="outer">
       <div id="container">
         <div id="display-outer">
-          <p id="display">{operand1 !== 0 && operand1} {operator !== 'N' && operator} {(operand2 !== 0 || operand1 === 0) && operand2}</p>
+          <p id="display">{operand1 !== 'N' && operand1} {operator !== 'N' && operator} {operand1 === 'N' ? (operand2 === 'N' ? 0 : operand2) : operand2 === '-N' ? '-' : (operand2 === 'N' ? null : operand2)}</p>
         </div>
         <button id="clear" onClick={handleClick}>A/C</button>
         <button id="divide" onClick={handleClick}>/</button>
