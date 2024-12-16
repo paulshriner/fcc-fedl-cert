@@ -4,62 +4,122 @@ import './App.css'
 export default function App() {
   // Thanks https://react.dev/learn/managing-state for state
   const [operand1, setOperand1] = useState(0);
-  const [hasDecimal, setHasDecimal] = useState(false);
   const [operand2, setOperand2] = useState(0);
   const [operator, setOperator] = useState('N');
 
   const handleClick = (e) => {
     switch(e.target.id) {
       case 'one':
-          setOperand1(1);
-          break;
+        // if operand is 0 then set it to the number, else add to the existing number (same for 0-9)
+        setOperand2(operand2 === 0 ? 1 : operand2 + '1');
+        break;
       case 'two':
-          setOperand1(2);
-          break;
+        setOperand2(operand2 === 0 ? 2 : operand2 + '2');
+        break;
       case 'three':
-          setOperand1(3);
-          break;
+        setOperand2(operand2 === 0 ? 3 : operand2 + '3');
+        break;
       case 'four':
-          setOperand1(4);
-          break;
+        setOperand2(operand2 === 0 ? 4 : operand2 + '4');
+        break;
       case 'five':
-          setOperand1(5);
-          break;
+        setOperand2(operand2 === 0 ? 5 : operand2 + '5');
+        break;
       case 'six':
-          setOperand1(6);
-          break;
+        setOperand2(operand2 === 0 ? 6 : operand2 + '6');
+        break;
       case 'seven':
-          setOperand1(7);
-          break;
+        setOperand2(operand2 === 0 ? 7 : operand2 + '7');
+        break;
       case 'eight':
-          setOperand1(8);
-          break;
+        setOperand2(operand2 === 0 ? 8 : operand2 + '8');
+        break;
       case 'nine':
-          setOperand1(9);
-          break;
+        setOperand2(operand2 === 0 ? 9 : operand2 + '9');
+        break;
       case 'zero':
-          setOperand1(0);
-          break;
+        setOperand2(operand2 === 0 ? 0 : operand2 + '0');
+        break;
       case 'add':
-          setOperator('+');
-          break;
-      case 'subtract':
-          setOperator('-');
-          break;
-      case 'multiply':
-          setOperator('*');
-          break;
-      case 'divide':
-          setOperator('/');
-          break;
-      case 'decimal':
-          setHasDecimal(true);
-          break;
-      default:
-          setOperand1(0);
+        // Here user pressed plus after entering number, prep for second number
+        if (operand2 !== 0) {
+          setOperand1(operand2);
           setOperand2(0);
-          setOperator('N');
-          setHasDecimal(false);
+        }
+        // Here user entered second number so this adds the numbers together
+        if (operand1 !== 0) {
+          setOperand1(solve());
+          setOperand2(0);
+        }
+        setOperator('+');
+        break;
+      case 'subtract':
+        // if no operator, then do subtraction
+        if (operator === 'N') {
+          setOperator('-');
+          if (operand2 !== 0) {
+            setOperand1(operand2);
+            setOperand2(0);
+          }
+        } else {
+          // if 0 then user is entering a negative number, else do the operation
+          if (operand2 !== 0) {
+            setOperand1(solve());
+            setOperand2(0);
+          } else {
+            setOperand2('-');
+          }
+        }
+        break;
+      case 'multiply':
+        if (operand2 !== 0) {
+          setOperand1(operand2);
+          setOperand2(0);
+        }
+        if (operand1 !== 0) {
+          setOperand1(solve());
+          setOperand2(0);
+        }
+        setOperator('*');
+        break;
+      case 'divide':
+        if (operand2 !== 0) {
+          setOperand1(operand2);
+          setOperand2(0);
+        }
+        if (operand1 !== 0) {
+          setOperand1(solve());
+          setOperand2(0);
+        }
+        setOperator('/');
+        break;
+      case 'decimal':
+        setOperand2(operand2 + '.');
+        break;
+      case 'equals':
+        setOperand2(solve());
+        setOperand1(0);
+        setOperator('N');
+        break;
+      default:
+        setOperand1(0);
+        setOperand2(0);
+        setOperator('N');
+    }
+  }
+
+  const solve = () => {
+    switch (operator) {
+      case '+':
+        return parseFloat(operand1) + parseFloat(operand2);
+      case '-':
+        return parseFloat(operand1) - parseFloat(operand2);
+      case '*':
+        return parseFloat(operand1) * parseFloat(operand2);
+      case '/':
+        return parseFloat(operand1) / parseFloat(operand2);
+      default:
+        return parseFloat(operand2);
     }
   }
 
@@ -82,7 +142,7 @@ export default function App() {
       <button id="one" onClick={handleClick}>1</button>
       <button id="zero" onClick={handleClick}>0</button>
       <button id="decimal" onClick={handleClick}>.</button>
-      <p id="display">{operand2} {operator === 'N' ? null : operator} {operand1}</p>
+      <p id="display">{operand1} {operator === 'N' ? null : operator} {operand2}</p>
     </>
   )
 }
