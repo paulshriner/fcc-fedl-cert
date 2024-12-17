@@ -121,23 +121,27 @@ function App() {
   }
   
   return (
-    <>
+    <div id="main-container">
       <h1>25 + 5 Clock</h1>
       <h2 id="break-label">Break Length</h2>
-      <button id="break-decrement" onClick={handleClick}>Down</button>
-      <div id="break-length">{breakLength}</div>
-      <button id="break-increment" onClick={handleClick}>Up</button>
+      <div class="length-controls">
+        <button id="break-decrement" onClick={handleClick}>V</button>
+        <div id="break-length">{breakLength}</div>
+        <button id="break-increment" onClick={handleClick}>^</button>
+      </div>
       <h2 id="session-label">Session Length</h2>
-      <button id="session-decrement" onClick={handleClick}>Down</button>
-      <div id="session-length">{sessionLength}</div>
-      <button id="session-increment" onClick={handleClick}>Up</button>
+      <div class="length-controls">
+        <button id="session-decrement" onClick={handleClick}>V</button>
+        <div id="session-length">{sessionLength}</div>
+        <button id="session-increment" onClick={handleClick}>^</button>
+      </div>
       <h2 id="timer-label" style={{color: statusColor}}>{status === "session" ? "Session" : "Break"}</h2>
       <div id="time-left" style={{color: statusColor}}>{format(timeRemaining / 1000)}</div>
       <button id="start_stop" onClick={handleClick}>Start/Stop</button>
       <button id="reset" onClick={reset}>Reset</button>
       {/* Thanks https://mixkit.co/free-sound-effects/beep/ for sound effect */}
       <audio id="beep" src="https://assets.mixkit.co/active_storage/sfx/221/221.wav"></audio>
-    </>
+    </div>
   )
 }
 

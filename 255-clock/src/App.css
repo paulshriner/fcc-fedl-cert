@@ -1,1 +1,46 @@
+body {
+    background-color: rgb(233, 160, 184);
+}
 
+#main-container {
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.length-controls {
+    display: flex;
+    justify-content: center;
+}
+
+.length-controls div {
+    padding: 0 10px;
+    font-size: 20px;
+}
+
+#time-left {
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+#start_stop, #reset, .length-controls button {
+    background-color: darkred;
+    border: 5px solid darkred;
+    color: white;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+#start_stop:hover, #reset:hover, .length-controls button:hover {
+    background-color: rgb(88, 24, 24);
+    border: 5px solid rgb(88, 24, 24);
+    transition: .5s;
+    cursor: pointer;
+}
+
+#start_stop {
+    margin-right: 5px;
+}
+
+#reset {
+    margin-left: 5px;
+}
