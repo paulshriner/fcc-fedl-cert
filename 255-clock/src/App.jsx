@@ -17,6 +17,17 @@ function App() {
       interval = setInterval(() => {
         setTimeRemaining(timeRemaining => timeRemaining - 1000);
       }, 1000);
+
+      // Update time remaining based on Break or Session
+      if (timeRemaining <= 0) {
+        if (status === "session") {
+          setStatus("break");
+          setTimeRemaining(breakLength * 60000);
+        } else {
+          setStatus("session");
+          setTimeRemaining(sessionLength * 60000);          
+        }
+      }
     } else if (!clockActive && timeRemaining !== 0) {
       // same as "pausing" the timer
       clearInterval(interval);
@@ -73,6 +84,23 @@ function App() {
       clockActive ? setClockActive(false) : setClockActive(true);
     }
   }
+
+  // Thanks https://stackoverflow.com/questions/61791234/how-to-display-countdown-timer-in-react for time formatting
+  // Pads a zero if the second is one digit (less than 10)
+  const padTime = time => {
+    return String(time).length === 1 ? `0${time}` : `${time}`;
+  }
+
+  const format = time => {
+    // Gets minutes using integer division
+    const minutes = Math.floor(time / 60);
+
+    // Get remainder seconds
+    const seconds = time % 60;
+
+    // Return formatted sring using padTime for seconds
+    return `${minutes}:${padTime(seconds)}`;
+  }
   
   return (
     <>
@@ -85,8 +113,8 @@ function App() {
       <button id="session-decrement" onClick={handleClick}>Down</button>
       <div id="session-length">{sessionLength}</div>
       <button id="session-increment" onClick={handleClick}>Up</button>
-      <h2 id="timer-label">Session</h2>
-      <div id="time-left">{timeRemaining}</div>
+      <h2 id="timer-label">{status === "session" ? "Session" : "Break"}</h2>
+      <div id="time-left">{format(timeRemaining / 1000)}</div>
       <button id="start_stop" onClick={handleClick}>Start/Stop</button>
       <button id="reset">Reset</button>
     </>
