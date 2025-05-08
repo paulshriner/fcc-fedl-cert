@@ -35,7 +35,7 @@ A countdown timer that cycles between a "Session" and a "Break".
 
 - [VS Code](https://code.visualstudio.com/) - Development environment
 - [Node.js](https://nodejs.org/en/) - JavaScript runtime environment
-- [Vite](https://vite.dev/guide/) - Build tool for setting up the project structure
+- [Vite](https://vite.dev/) - Build tool for setting up the project structure
 - [Git](https://git-scm.com/)/[GitHub](https://github.com/) - Version control
 
 ## Running the Projects
