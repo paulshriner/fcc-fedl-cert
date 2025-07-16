@@ -10,21 +10,31 @@ These are the projects I did in the completion of this certificate.
 
 Displays quotes from an API and allows sharing via Twitter.
 
+![Image of Project](images/quote-machine.png)
+
 ### Markdown Previewer
 
 Displays Markdown text in a preview pane.
+
+![Image of Project](images/markdown-previewer.png)
 
 ### Drum Machine
 
 Play a selection of drum samples.
 
+![Image of Project](images/drum-machine.png)
+
 ### JavaScript Calculator
 
 A basic 4-function calculator.
 
+![Image of Project](images/calculator.png)
+
 ### 25 + 5 Clock
 
 A countdown timer that cycles between a "Session" and a "Break".
+
+![Image of Project](images/255-clock.png)
 
 ## Skills
 - Bootstrap CSS
